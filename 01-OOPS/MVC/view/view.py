@@ -14,7 +14,7 @@ def login():
     id = input("Enter ID : ")
     name = input("Enter Name : ")
     data = controller.loginStudent(id,name)
-    print(data)
+    # print(data)
 
 while True:
     print("""
