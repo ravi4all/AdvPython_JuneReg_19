@@ -1,7 +1,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+import pymysql
 
+connection = pymysql.connect(host='localhost',port=3306,user='root',database='library',
+                             autocommit = True)
 
-class Ui_MainWindow(object):
+cursor = connection.cursor()
+
+class Ui_MainWindow(QtWidgets.QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1240, 778)
@@ -172,6 +178,85 @@ class Ui_MainWindow(object):
         self.tableWidget_2.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_2.setHorizontalHeaderItem(4, item)
+
+        self.frame_4 = QtWidgets.QFrame(self.frame_3)
+        self.frame_4.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.frame_4.setGeometry(QtCore.QRect(0, 0, 1241, 721))
+        self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.label_14 = QtWidgets.QLabel(self.frame_4)
+        self.label_14.setGeometry(QtCore.QRect(420, 10, 371, 81))
+        self.label_14.setStyleSheet("font: 22pt \"MS Shell Dlg 2\";")
+        self.label_14.setObjectName("label_14")
+        self.label_15 = QtWidgets.QLabel(self.frame_4)
+        self.label_15.setGeometry(QtCore.QRect(180, 110, 331, 71))
+        self.label_15.setStyleSheet("font: 18pt \"MS Shell Dlg 2\";")
+        self.label_15.setObjectName("label_15")
+        self.lineEdit_6 = QtWidgets.QLineEdit(self.frame_4)
+        self.lineEdit_6.setGeometry(QtCore.QRect(600, 110, 461, 81))
+        self.lineEdit_6.setStyleSheet("font: 18pt \"MS Shell Dlg 2\";")
+        self.lineEdit_6.setObjectName("lineEdit_6")
+        self.label_18 = QtWidgets.QLabel(self.frame_4)
+        self.label_18.setGeometry(QtCore.QRect(180, 500, 351, 71))
+        self.label_18.setStyleSheet("font: 18pt \"MS Shell Dlg 2\";")
+        self.label_18.setObjectName("label_18")
+        self.comboBox_3 = QtWidgets.QComboBox(self.frame_4)
+        self.comboBox_3.setGeometry(QtCore.QRect(610, 510, 181, 51))
+        self.comboBox_3.setStyleSheet("font: 16pt \"MS Shell Dlg 2\";")
+        self.comboBox_3.setObjectName("comboBox_3")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_4 = QtWidgets.QComboBox(self.frame_4)
+        self.comboBox_4.setGeometry(QtCore.QRect(600, 420, 181, 51))
+        self.comboBox_4.setStyleSheet("font: 16pt \"MS Shell Dlg 2\";")
+        self.comboBox_4.setObjectName("comboBox_4")
+        self.comboBox_4.addItem("")
+        self.comboBox_4.addItem("")
+        self.comboBox_4.addItem("")
+        self.comboBox_4.addItem("")
+        self.comboBox_4.addItem("")
+        self.label_19 = QtWidgets.QLabel(self.frame_4)
+        self.label_19.setGeometry(QtCore.QRect(180, 410, 351, 71))
+        self.label_19.setStyleSheet("font: 18pt \"MS Shell Dlg 2\";")
+        self.label_19.setObjectName("label_19")
+        self.comboBox_5 = QtWidgets.QComboBox(self.frame_4)
+        self.comboBox_5.setGeometry(QtCore.QRect(820, 510, 181, 51))
+        self.comboBox_5.setStyleSheet("font: 16pt \"MS Shell Dlg 2\";")
+        self.comboBox_5.setObjectName("comboBox_5")
+        self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
+        self.pushButton_5 = QtWidgets.QPushButton(self.frame_4)
+        self.pushButton_5.setGeometry(QtCore.QRect(380, 630, 451, 71))
+        self.pushButton_5.setStyleSheet("font: 20pt \"MS Shell Dlg 2\";\n"
+                                        "background-color: rgb(255, 0, 0);\n"
+                                        "color: rgb(255, 255, 255);")
+        self.pushButton_5.setObjectName("pushButton_5")
+        self.lineEdit_7 = QtWidgets.QLineEdit(self.frame_4)
+        self.lineEdit_7.setGeometry(QtCore.QRect(600, 210, 461, 81))
+        self.lineEdit_7.setStyleSheet("font: 18pt \"MS Shell Dlg 2\";")
+        self.lineEdit_7.setObjectName("lineEdit_7")
+        self.label_16 = QtWidgets.QLabel(self.frame_4)
+        self.label_16.setGeometry(QtCore.QRect(180, 210, 331, 71))
+        self.label_16.setStyleSheet("font: 18pt \"MS Shell Dlg 2\";")
+        self.label_16.setObjectName("label_16")
+        self.lineEdit_8 = QtWidgets.QLineEdit(self.frame_4)
+        self.lineEdit_8.setGeometry(QtCore.QRect(600, 310, 461, 81))
+        self.lineEdit_8.setStyleSheet("font: 18pt \"MS Shell Dlg 2\";")
+        self.lineEdit_8.setObjectName("lineEdit_8")
+        self.label_17 = QtWidgets.QLabel(self.frame_4)
+        self.label_17.setGeometry(QtCore.QRect(180, 310, 331, 71))
+        self.label_17.setStyleSheet("font: 18pt \"MS Shell Dlg 2\";")
+        self.label_17.setObjectName("label_17")
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1240, 31))
@@ -241,7 +326,7 @@ class Ui_MainWindow(object):
         item = self.tableWidget.horizontalHeaderItem(5)
         item.setText(_translate("MainWindow", "Return Book"))
         self.label_8.setText(_translate("MainWindow", "OR"))
-        self.pushButton_4.setText(_translate("MainWindow", "Issue Another Book"))
+        self.pushButton_4.setText(_translate("MainWindow", "Issue Book"))
         self.label_9.setText(_translate("MainWindow", "Total Books Issued : "))
         self.label_10.setText(_translate("MainWindow", "Welcome "))
         self.label_11.setText(_translate("MainWindow", "Currently Books Issued : "))
@@ -257,6 +342,30 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Book Availability"))
         item = self.tableWidget_2.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "Issue Book"))
+        self.label_14.setText(_translate("MainWindow", "Registration Form"))
+        self.label_15.setText(_translate("MainWindow", "Enter Name"))
+        self.label_18.setText(_translate("MainWindow", "Select Year and Sem"))
+        self.comboBox_3.setItemText(0, _translate("MainWindow", "1"))
+        self.comboBox_3.setItemText(1, _translate("MainWindow", "2"))
+        self.comboBox_3.setItemText(2, _translate("MainWindow", "3"))
+        self.comboBox_3.setItemText(3, _translate("MainWindow", "4"))
+        self.comboBox_4.setItemText(0, _translate("MainWindow", "Btech"))
+        self.comboBox_4.setItemText(1, _translate("MainWindow", "BCA"))
+        self.comboBox_4.setItemText(2, _translate("MainWindow", "MCA"))
+        self.comboBox_4.setItemText(3, _translate("MainWindow", "BBA"))
+        self.comboBox_4.setItemText(4, _translate("MainWindow", "MBA"))
+        self.label_19.setText(_translate("MainWindow", "Select Course"))
+        self.comboBox_5.setItemText(0, _translate("MainWindow", "1"))
+        self.comboBox_5.setItemText(1, _translate("MainWindow", "2"))
+        self.comboBox_5.setItemText(2, _translate("MainWindow", "3"))
+        self.comboBox_5.setItemText(3, _translate("MainWindow", "4"))
+        self.comboBox_5.setItemText(4, _translate("MainWindow", "5"))
+        self.comboBox_5.setItemText(5, _translate("MainWindow", "6"))
+        self.comboBox_5.setItemText(6, _translate("MainWindow", "7"))
+        self.comboBox_5.setItemText(7, _translate("MainWindow", "8"))
+        self.pushButton_5.setText(_translate("MainWindow", "Register Now"))
+        self.label_16.setText(_translate("MainWindow", "Enter ID"))
+        self.label_17.setText(_translate("MainWindow", "Enter Password"))
         self.menuLogin_Options.setTitle(_translate("MainWindow", "Login As"))
         self.menuRegistration_Options.setTitle(_translate("MainWindow", "Registration As"))
         self.actionTeacher.setText(_translate("MainWindow", "Teacher"))
@@ -268,8 +377,75 @@ class Ui_MainWindow(object):
 
         self.frame.hide()
 
+        self.pushButton_2.clicked.connect(self.showRegister)
+        self.pushButton_5.clicked.connect(self.registerUser)
+        self.pushButton.clicked.connect(self.showLoginScreen)
+        self.pushButton_3.clicked.connect(self.loginUser)
+        self.pushButton_4.clicked.connect(self.showBooks)
 
+    def showRegister(self):
+        self.frame.show()
 
+    def showBooks(self):
+        try:
+            self.frame_3.show()
+            self.frame_4.hide()
+
+            query = "select * from books"
+            cursor.execute(query)
+            data = cursor.fetchall()
+
+            self.tableWidget_2.setRowCount(len(data))
+
+            for i in range(len(data)):
+                for j in range(4):
+                    item = QtWidgets.QTableWidgetItem()
+                    self.tableWidget_2.setItem(i, j, item)
+                    item.setText(str(data[i][j]))
+        except BaseException as ex:
+            print(ex)
+
+    def showLoginScreen(self):
+        self.frame.show()
+        self.frame_2.hide()
+
+    def loginUser(self):
+        try:
+            login_id = self.lineEdit.text()
+            login_pwd = self.lineEdit_2.text()
+            query = "select * from users where id = %s and pwd = %s"
+            cursor.execute(query, (login_id, login_pwd))
+            data = cursor.fetchall()
+            if len(data) < 1:
+                print("Invalid User")
+            else:
+                self.showDashboard(data)
+        except BaseException as ex:
+            print(ex)
+
+    def registerUser(self):
+        try:
+            name = self.lineEdit_6.text()
+            id = self.lineEdit_7.text()
+            pwd = self.lineEdit_8.text()
+            course = self.comboBox_4.currentText()
+            year = self.comboBox_3.currentText()
+            sem = self.comboBox_5.currentText()
+
+            # print(name,id,pwd,course,year,sem)
+            query = "insert into users values (%s,%s,%s,%s,%s,%s)"
+            cursor.execute(query, (name,id,pwd,course,year,sem))
+            QMessageBox.about(self, 'Title', 'Registered Successfully')
+            self.showLoginScreen()
+        except pymysql.err.IntegrityError:
+            print("ID Already Exist")
+            QMessageBox.about(self,'Title','ID Already Exist')
+
+    def showDashboard(self, data):
+        self.frame_2.show()
+        self.frame_3.hide()
+        # print(data)
+        self.label_10.setText("Welcome {}".format(data[0][0]))
 
 
 if __name__ == "__main__":
