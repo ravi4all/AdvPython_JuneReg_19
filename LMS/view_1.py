@@ -383,8 +383,14 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.pushButton_3.clicked.connect(self.loginUser)
         self.pushButton_4.clicked.connect(self.showBooks)
 
+        self.tableWidget_2.doubleClicked.connect(self.rowSelected)
+
     def showRegister(self):
         self.frame.show()
+
+    def rowSelected(self):
+        index = self.tableWidget_2.item(self.tableWidget_2.currentRow(),1).text()
+        print(index)
 
     def showBooks(self):
         try:
@@ -394,14 +400,21 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             query = "select * from books"
             cursor.execute(query)
             data = cursor.fetchall()
+            books = []
+            for i in range(len(data)):
+                book = list(data[i])
+                book.append('Issue Book')
+                books.append(book)
 
             self.tableWidget_2.setRowCount(len(data))
-
-            for i in range(len(data)):
-                for j in range(4):
+            print(data)
+            for i in range(len(books)):
+                for j in range(len(books[0])):
                     item = QtWidgets.QTableWidgetItem()
+                    item.setFlags(QtCore.Qt.ItemIsEnabled)
                     self.tableWidget_2.setItem(i, j, item)
-                    item.setText(str(data[i][j]))
+                    item.setText(str(books[i][j]))
+            # item.doubleClicked.connect(self.rowSelected)
         except BaseException as ex:
             print(ex)
 
