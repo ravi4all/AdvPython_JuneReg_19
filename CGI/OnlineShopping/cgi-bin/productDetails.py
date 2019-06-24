@@ -1,9 +1,13 @@
 import pymysql
 import base
+import cgi
 
 connection = pymysql.connect(host='localhost',user='root',database='onlineshopping',
                              port = 3306, autocommit = True)
 cursor = connection.cursor()
+
+form = cgi.FieldStorage()
+p_id = form.getvalue('p_id')
 
 print("""
 <!doctype html>
@@ -22,35 +26,41 @@ print("""
   """)
 
 base.header()
+query_1 = "select * from productdetails where p_id = %s"
+cursor.execute(query_1, (p_id))
+productsdetails = cursor.fetchall()
 
-query = "select * from products"
-cursor.execute(query)
-data = cursor.fetchall()
-rowcount = cursor.rowcount
+query_2 = "select * from products where p_id = %s"
+cursor.execute(query_2, (p_id))
+products = cursor.fetchall()
+
+# print(productsdetails)
 
 print("""
 <div class="container">
-<h2 class='text-center'>Products</h2>
+<h2 class='text-center'> Product Detail </h2>
 <hr>
-    <div class='row'>
-""")
-
-for i in range(rowcount):
-    print("""
-    <div class='col-md-3'>
-        <div class="card" style="width:15rem; margin-bottom:50px;">
-    <img src="{}" class="card-img-top w-100" alt="..." style='height:300px;'>
-    <div class="card-body">
-        <h5 class="card-title">{}</h5>
-        <p class="card-text">Price : {}</p>
-        <a href="productDetails.py?p_id={}" class="btn btn-primary">View Details</a>
+        <div class="row">
+            <div class="col-md-6">
+                <img class='w-100' src="{}" alt="">
+            </div>
+            <div class="col-md-6">
+                <h3>Title</h3>
+                <p>{}</p>
+                <h4>Price</h4>
+                <p>{}</p>
+                <h4>Rating : {}</h4>
+                <h4>Description</h4>
+                <p>{}</p>
+                <p>Offers : {}</p>
+                <h4>Highlights</h4>
+                <p>{}</p>
+            </div>
+        </div>
     </div>
-    </div></div>
-        """.format(data[i][3], data[i][1], data[i][2], data[i][0]))
-print("""
-</div></div>
-""")
-
+""".format(products[0][3], products[0][1], products[0][2],
+productsdetails[0][2],productsdetails[0][1],productsdetails[0][3],
+productsdetails[0][4]))
 
 print("""
     <!-- Optional JavaScript -->

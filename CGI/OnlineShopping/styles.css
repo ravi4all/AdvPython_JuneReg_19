@@ -1,0 +1,11 @@
+h2 {
+    font-size: 50px;
+}
+
+.card img {
+    transition: 1s;
+}
+
+.card:hover img {
+    transform: rotateY(180deg);
+}
