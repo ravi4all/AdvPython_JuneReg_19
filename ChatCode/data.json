@@ -1,0 +1,12 @@
+[
+  {
+    "Ram": [
+      {"msg": "hello"},
+      {"rply": "hey"}
+    ]},
+  {
+    "Shyam": [
+      {"msg": "hey"},
+      {"rply": "hi"}
+    ]}
+]
